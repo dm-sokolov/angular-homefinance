@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "HomeFinanceWeb": {
+    "HomeFinance-UI": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/HomeFinanceWeb",
+            "outputPath": "dist/HomeFinance-UI",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -65,18 +65,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "HomeFinanceWeb:build"
+            "browserTarget": "HomeFinance-UI:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "HomeFinanceWeb:build:production"
+              "browserTarget": "HomeFinance-UI:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "HomeFinanceWeb:build"
+            "browserTarget": "HomeFinance-UI:build"
           }
         },
         "test": {
@@ -113,16 +113,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "HomeFinanceWeb:serve"
+            "devServerTarget": "HomeFinance-UI:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "HomeFinanceWeb:serve:production"
+              "devServerTarget": "HomeFinance-UI:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "HomeFinanceWeb"
+  "defaultProject": "HomeFinance-UI"
 }
