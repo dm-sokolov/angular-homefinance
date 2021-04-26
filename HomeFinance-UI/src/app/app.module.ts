@@ -7,6 +7,7 @@ import { MainLayoutComponent } from './shared/components/main-layout/main-layout
 import { HomePageComponent } from './home-page/home-page.component';
 import { OperationPageComponent } from './operation-page/operation-page.component';
 import { OperationComponent } from './shared/components/operation/operation.component';
+import {SharedModule} from "./shared/shared.module";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { OperationComponent } from './shared/components/operation/operation.comp
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
