@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Operation} from "../../shared/interfaces";
+import {OperationsService} from "../../shared/operations.service";
 
 @Component({
   selector: 'app-create-page',
@@ -11,7 +12,7 @@ export class CreatePageComponent implements OnInit {
 
   form: FormGroup;
 
-  constructor() { }
+  constructor(private operationsService: OperationsService) { }
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -33,7 +34,10 @@ export class CreatePageComponent implements OnInit {
       date: new Date()
     }
 
-    console.log(operation)
+    this.operationsService.create(operation).subscribe(()=> {
+      this.form.reset()
+    })
+
   }
 
 }

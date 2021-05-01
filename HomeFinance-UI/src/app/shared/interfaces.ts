@@ -16,3 +16,7 @@ export interface Operation {
   author: string
   date: Date
 }
+
+export interface FbCreateResponse {
+  name: string
+}
