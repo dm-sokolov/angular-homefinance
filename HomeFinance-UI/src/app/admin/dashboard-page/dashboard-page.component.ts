@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {OperationsService} from "../../shared/operations.service";
 import {Operation} from "../../shared/interfaces";
 import {Subscription} from "rxjs";
+import {AlertService} from "../shared/services/alert.service";
 
 interface onDestroy {
 }
@@ -18,7 +19,10 @@ export class DashboardPageComponent implements OnInit, onDestroy {
   deleteSubscription: Subscription
   searchStr: ''
 
-  constructor(private operationsService: OperationsService) { }
+  constructor(
+    private operationsService: OperationsService,
+    private alertService: AlertService
+  ) { }
 
   ngOnInit(): void {
     this.operationsSubscription = this.operationsService.getAll().subscribe( operations => {
@@ -29,6 +33,7 @@ export class DashboardPageComponent implements OnInit, onDestroy {
   remove(id: string) {
     this.deleteSubscription = this.operationsService.remove(id).subscribe(() => {
       this.operations = this.operations.filter( operation => operation.id !== id)
+      this.alertService.danger('Запись успешно удалена')
     })
 
   }
