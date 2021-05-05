@@ -1,1 +1,23 @@
-<p>operation-page works!</p>
+<div *ngIf="operation$ | async as operation; else loading">
+  <div class="operation">
+
+    <div class="header">
+      <h1>{{ operation.title }}</h1>
+      <button routerLink="/" class="btn btn-link">На главную</button>
+    </div>
+
+    <div class="info">
+      <strong>{{ operation.author }}</strong>
+      <small>{{ operation.date | date: 'long':null:'ru' }}</small>
+    </div>
+
+    <div>
+      <quill-view-html [content]="operation.text"></quill-view-html>
+    </div>
+
+  </div>
+</div>
+
+<ng-template #loading>
+  <p class="text-center">Идет загрузка операции...</p>
+</ng-template>
