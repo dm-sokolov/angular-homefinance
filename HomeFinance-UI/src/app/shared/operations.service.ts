@@ -27,4 +27,20 @@ export class OperationsService {
        )
       )
   }
+
+  getAll(): Observable<Operation[]> {
+    return this.http.get(`${environment.fbDbUrl}/operations.json`)
+      .pipe(
+        map((response: {[key: string]: any}) => {
+          return Object
+            .keys(response)
+            .map(key=> ({
+              ...response[key],
+              id: key,
+              date: new Date(response[key].date)
+            }))
+
+        })
+      )
+  }
 }
