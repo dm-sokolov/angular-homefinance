@@ -1,7 +1,7 @@
 <div *ngIf="operations.length; else loading">
 
   <div class="form-control">
-    <input type="text" placeholder="Найти операцию...">
+    <input type="text" placeholder="Найти операцию..." [(ngModel)]="searchStr">
   </div>
 
   <table>
@@ -15,7 +15,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let operation of operations; let idx = index">
+    <tr *ngFor="let operation of operations | searchOperations: searchStr; let idx = index">
       <td>{{ idx + 1 }}</td>
       <td>{{ operation.author }}</td>
       <td>{{ operation.title }}</td>
