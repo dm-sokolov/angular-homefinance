@@ -61,4 +61,8 @@ export class OperationsService {
   remove(id: string): Observable<void> {
     return this.http.delete<void>(`${environment.fbDbUrl}/operations/${id}.json`)
   }
+
+  update(operation: Operation): Observable<Operation> {
+    return this.http.patch<Operation>(`${environment.fbDbUrl}/operations/${operation.id}.json`, operation)
+  }
 }
