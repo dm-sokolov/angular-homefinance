@@ -43,4 +43,8 @@ export class OperationsService {
         })
       )
   }
+
+  remove(id: string): Observable<void> {
+    return this.http.delete<void>(`${environment.fbDbUrl}/operations/${id}.json`)
+  }
 }

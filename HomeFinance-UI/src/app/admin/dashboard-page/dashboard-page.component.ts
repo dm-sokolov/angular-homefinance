@@ -15,6 +15,7 @@ export class DashboardPageComponent implements OnInit, onDestroy {
 
   operations: Operation[] = []
   operationsSubscription: Subscription
+  deleteSubscription: Subscription
   searchStr: ''
 
   constructor(private operationsService: OperationsService) { }
@@ -25,13 +26,21 @@ export class DashboardPageComponent implements OnInit, onDestroy {
     })
   }
 
+  remove(id: string) {
+    this.deleteSubscription = this.operationsService.remove(id).subscribe(() => {
+      this.operations = this.operations.filter( operation => operation.id !== id)
+    })
+
+  }
+
   ngOnDestroy() {
     if (this.operationsSubscription) {
       this.operationsSubscription.unsubscribe()
     }
+
+    if (this.deleteSubscription) {
+      this.deleteSubscription.unsubscribe()
+    }
   }
 
-  remove(id: string) {
-
-  }
 }
