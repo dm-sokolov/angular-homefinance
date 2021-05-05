@@ -44,6 +44,20 @@ export class OperationsService {
       )
   }
 
+  getById(id: string): Observable<Operation> {
+    return this.http.get<Operation>(`${environment.fbDbUrl}/operations/${id}.json`)
+      .pipe(
+        map((operation: Operation) => {
+            return {
+              ...operation,
+              id,
+              date: new Date(operation.date)
+            }
+          }
+        )
+      )
+  }
+
   remove(id: string): Observable<void> {
     return this.http.delete<void>(`${environment.fbDbUrl}/operations/${id}.json`)
   }
