@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Operation} from "../../interfaces";
 
 @Component({
   selector: 'app-operation',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./operation.component.scss']
 })
 export class OperationComponent implements OnInit {
+
+  @Input() operation: Operation
 
   constructor() { }
 

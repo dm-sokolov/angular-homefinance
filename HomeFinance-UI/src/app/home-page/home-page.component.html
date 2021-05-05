@@ -1,7 +1,14 @@
-<div class="operations">
-  <app-operation></app-operation>
-  <app-operation></app-operation>
-  <app-operation></app-operation>
-  <app-operation></app-operation>
-  <app-operation></app-operation>
+<div
+  *ngIf="operations$ | async as operations; else loading"
+  class="operations"
+>
+  <app-operation
+    *ngFor="let operation of operations"
+    [operation]="operation"
+  >
+  </app-operation>
 </div>
+
+<ng-template #loading>
+  <p class="text-center">Идет загрузка...</p>
+</ng-template>

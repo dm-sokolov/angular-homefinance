@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {OperationsService} from "../shared/operations.service";
+import {Observable} from "rxjs";
+import {Operation} from "../shared/interfaces";
 
 @Component({
   selector: 'app-home-page',
@@ -7,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor() { }
+  operations$: Observable<Operation[]>
+
+  constructor(
+    private operationsService: OperationsService
+  ) { }
 
   ngOnInit(): void {
+    this.operations$ = this.operationsService.getAll()
   }
 
 }

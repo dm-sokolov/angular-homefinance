@@ -1,17 +1,17 @@
 <div class="card">
 
   <div class="card-header">
-    <h2>Operation title</h2>
+    <h2>{{ operation.title }}</h2>
 
-    <small>25.04.2021</small>
+    <small>{{ operation.date | date: 'dd.MM.yyyy' }}</small>
   </div>
 
   <div>
-    <small>Dmitriy</small>
+    <small>{{ operation.author }}</small>
   </div>
 
   <button
-    [routerLink]="['/operation', 123123]"
+    [routerLink]="['/operation', operation.id]"
     class="btn btn-dark"
   >Открыть</button>
 
