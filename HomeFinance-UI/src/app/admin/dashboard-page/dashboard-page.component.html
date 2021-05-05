@@ -19,7 +19,7 @@
       <td>{{ idx + 1 }}</td>
       <td>{{ operation.author }}</td>
       <td>{{ operation.title }}</td>
-      <td>{{ operation.date | date: 'medium' }}</td>
+      <td>{{ operation.date | date: 'medium':null:'ru' }}</td>
       <td>
         <button class="btn btn-link open"
                 [routerLink]="['/admin', 'operation', operation.id, 'edit']">
