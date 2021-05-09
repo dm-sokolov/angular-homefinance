@@ -1,6 +1,23 @@
-<nav class="navbar main">
-  <h1>Angular Blog</h1>
-</nav>
+  <nav class="navbar bg-primary">
+    <h1>
+      <a routerLink="/">Home Finance</a>
+    </h1>
+
+    <ul *ngIf="!auth.isAuthenticated(); else dashboard" >
+      <li routerLinkActive="active">
+        <a [routerLink]="['/admin', 'login']">Войти</a>
+      </li>
+    </ul>
+
+    <ng-template #dashboard>
+      <ul>
+        <li routerLinkActive="active">
+          <a [routerLink]="['/admin', 'dashboard']">Операции</a>
+        </li>
+      </ul>
+
+    </ng-template>
+  </nav>
 
 <div class="container">
   <router-outlet></router-outlet>
